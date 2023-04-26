@@ -30,4 +30,4 @@ const connect = async () => {
 };
 
 // export "connect" function to be used elsewhere.
-module.export = { connect };
+module.exports = { connect };
