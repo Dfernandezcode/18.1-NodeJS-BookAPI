@@ -40,9 +40,14 @@ const bookList = [
 connect().then(() => {
   console.log("Connected");
 
+// Delete data
+Book.collection.drop().then(() => {
+  console.log("Usuarios eliminados");
+
+
   const documents = bookList.map((book) => new Book(book));
 
-  Book.insertMany(documents)
+  Books.insertMany(documents)
     .then(() => {
       console.log("Data saved correctly");
     })
