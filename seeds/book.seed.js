@@ -40,17 +40,16 @@ const bookList = [
 connect().then(() => {
   console.log("Connected");
 
-// Delete data
-Book.collection.drop().then(() => {
-  console.log("Usuarios eliminados");
+  // Delete data
+  Book.collection.drop().then(() => {
+    console.log("Books deleted");
 
+    // Add books
+    const documents = bookList.map((book) => new Book(book));
 
-  const documents = bookList.map((book) => new Book(book));
-
-  Books.insertMany(documents)
-    .then(() => {
-      console.log("Data saved correctly");
-    })
-    .catch((error) => console.error(error))
-    .finally(() => mongoose.disconnect());
+    Book.insertMany(documents)
+      .then(() => console.log("Datos guardados correctamente!"))
+      .catch((error) => console.error(error))
+      .finally(() => mongoose.disconnect());
+  });
 });
